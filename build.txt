@@ -1,0 +1,9 @@
+docker build   -t jafarijason/jrj-mt5-docker-wine-vnc:1.0.1 .
+docker push jafarijason/jrj-mt5-docker-wine-vnc:1.0.1
+
+docker run --platform linux/amd64 -it --rm -p 3000:3000 -p 8001:8001 -p 8080:8080 -v ./config:/config  --name mt5 jafarijason/jrj-mt5-docker-wine-vnc:1.0.1
+docker run --platform linux/amd64 \
+    -it --rm -p 3000:3000 -p 8001:8001  \
+    -e CUSTOM_USER=username \
+    -e PASSWORD=securepassword \
+    --name mt5 jafarijason/jrj-mt5-docker-wine-vnc:1.0.1
